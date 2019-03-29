@@ -25,10 +25,20 @@ sigma = zeros(1, size(X, 2));
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
+% computing mu for each feature
 
+% calculating mean of X
+mu = mean(X);
 
+% using bsxfun to substract a row vector to every row of a Matrix
+X_norm = bsxfun(@minus, X, mu);
 
-
+% calculating std of X
+sigma = std(X);
+ 
+ 
+% using bsxfun to divide each element of each row of a matrix by the elements of a row vector
+X_norm = bsxfun(@rdivide, X_norm, sigma);
 
 
 
