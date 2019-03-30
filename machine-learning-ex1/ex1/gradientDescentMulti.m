@@ -26,13 +26,18 @@ for iter = 1:num_iters
  %theta(1) = theta(1) - (alpha/m) * (t1);
   %theta(2) = theta(2) - (alpha/m) * (t2);
 %theta(3) = theta(3) - (alpha/m) * (t3);
+%i = 1:m;
 
- h=theta'*X;    
+h = X* theta; % Performing vector multiplication for every example of X obtaining 
+               % a row vector of all h functions for each example 
+               % those are the predicted values
 
-    delta=1/m*(X'*X*theta-X'*y);
+a = h - y;
 
-    theta=theta-alpha.*delta;
-
+    
+ 
+ theta = (theta - (alpha*(1/m).* X'*a));  
+ 
 
     % ============================================================
 
